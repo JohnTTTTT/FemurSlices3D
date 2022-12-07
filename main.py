@@ -166,8 +166,6 @@ def buildTriangles( slice0, slice1 ):
     # Find the closest pair of vertices (one from each slice) to start with.
     #
     # This can be done with "brute force" if you wish.
-    #
-    # [1 mark] 
 
     minDistance = [distance(slice0.verts[0],slice1.verts[0]), slice0.verts[0],slice1.verts[0]]
     for v1 in slice0.verts:
@@ -183,8 +181,6 @@ def buildTriangles( slice0, slice1 ):
     #
     # ADD THE FIRST VERTEX TO THE END of the vertices, so that the
     # triangulation ends up on the same edge as it started.
-    #
-    # [1 mark]
 
     point0 = slice0.verts.index(minDistance[1])  
     permutation0 = slice0.verts[point0:] + slice0.verts[:point0] + [minDistance[1]]
@@ -208,8 +204,6 @@ def buildTriangles( slice0, slice1 ):
     # Dir.PREV_COL in each entry [r][c], depending on whether the
     # min-area triangulation ending at [r][c] came from the previous
     # row or previous column.
-    #
-    # [1 mark]
 
     minArea = [] 
     minDir  = [] 
@@ -229,8 +223,6 @@ def buildTriangles( slice0, slice1 ):
     #Intialize the zero index of minDir and minArea
 
     # Fill in row 0 of minArea and minDir, since it's a special case as there's no row -1
-    #
-    # [2 marks]
 
     for r in range(1,length0):    
         minDir[0][r] = "-"
@@ -239,8 +231,6 @@ def buildTriangles( slice0, slice1 ):
         #Ignoring base case since it's different (".")
 
     # Fill in col 0 of minArea and minDir, since it's a special case as there's no col -1
-    #
-    # [2 marks]
 
     for c in range(1,length1): 
         minDir[c][0] = "|"
@@ -249,8 +239,6 @@ def buildTriangles( slice0, slice1 ):
         #Ignoring base case since it's different (".")
 
     # Fill in the remaining entries of minArea and minDir.  This is very similar to the above, but more general.
-    #
-    # [2 marks]
 
     for r in range(1,length1):
         for c in range(1,length0):
@@ -292,11 +280,8 @@ def buildTriangles( slice0, slice1 ):
     # This is for your debugging, if you wish.  It's not required, but
     # is strongly recommended.
     #
-    # [0 marks]
-
 
     # [YOUR CODE HERE, OPTIONALLY]
-
     
     # Walk backward through the 'minDir' array to build triangulation.
     #
@@ -311,7 +296,6 @@ def buildTriangles( slice0, slice1 ):
     #
     # Continue going backward through the array until reaching [0][0].
     #
-    # [3 marks]
 
     triangles = []
 
